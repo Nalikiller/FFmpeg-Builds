@@ -1,7 +1,12 @@
 #!/bin/bash
 
 SCRIPT_REPO="https://github.com/Netflix/vmaf.git"
-SCRIPT_COMMIT="f712fa7564fe49b12991d83920b83573af2ae063"
+SCRIPT_COMMIT="74f930d17de8c58e7c2ce55e2b897b0030ebd8ef"
+
+ffbuild_depends() {
+    echo base
+    echo zimg
+}
 
 ffbuild_enabled() {
     return 0
@@ -25,6 +30,7 @@ ffbuild_dockerbuild() {
         -Denable_tests=false
         -Denable_docs=false
         -Denable_float=true
+        -Denable_zimg=true
     )
 
     if [[ $TARGET == *32 ]]; then
